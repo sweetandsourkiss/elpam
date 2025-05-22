@@ -5,6 +5,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'api_key.g.dart';
 
 @riverpod
-String helloWorld(Ref ref) {
+String apiKey(Ref ref) {
   return dotenv.env['API_KEY']!;
 }
