@@ -1,20 +1,17 @@
-import 'package:elpam/provider/api_key.dart';
+import 'package:elpam/features/splash.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Elpam extends ConsumerWidget {
+class Elpam extends StatelessWidget {
   const Elpam({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final String value = ref.watch(helloWorldProvider);
-    print(value);
+  Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Elpam',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
-      home: Scaffold(body: Center(child: Text('Hello, Elpam!'))),
+      home: Scaffold(body: Splash()),
     );
   }
 }
