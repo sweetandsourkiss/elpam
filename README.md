@@ -1,3 +1,3 @@
-# Elpam - working title
+# Elpam(가제)
 
-A informative application of MapleStory
+NEXON OPEN API를 활용한 메이플스토리 애플리케이션
