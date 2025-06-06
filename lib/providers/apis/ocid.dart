@@ -10,6 +10,9 @@ Future<String> getOcid(String name) async {
   });
   final response = await http.get(uri, headers: commonHeader);
   Map<String, dynamic> map = jsonDecode(response.body);
-
-  return map['ocid'];
+  if (map != Null) {
+    return map['ocid'];
+  } else {
+    return 'Error';
+  }
 }
