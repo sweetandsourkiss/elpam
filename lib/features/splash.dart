@@ -1,3 +1,4 @@
+import 'package:elpam/providers/apis/ocid.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -7,8 +8,8 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+  late final SharedPreferencesWithCache _prefs;
   final TextEditingController _controller = TextEditingController();
-  String _name = "";
 
   @override
   void initState() {
@@ -16,14 +17,21 @@ class _SplashState extends State<Splash> {
     load();
   }
 
+  void save() async {
+    if (_controller.text != '') {
+      String ocid = await getOcid(_controller.text);
+      _prefs.setString('ocid', ocid);
+      print(ocid);
+    }
+  }
+
   void load() async {
-    final SharedPreferencesWithCache _prefs =
-        await SharedPreferencesWithCache.create(
-          cacheOptions: const SharedPreferencesWithCacheOptions(
-            allowList: <String>{'ocid'},
-          ),
-        );
-    print(_prefs.getString('ocid'));
+    _prefs = await SharedPreferencesWithCache.create(
+      cacheOptions: const SharedPreferencesWithCacheOptions(
+        allowList: <String>{'ocid'},
+      ),
+    );
+    // print(_prefs.getString('ocid'));
     // _prefs.setString(
     //   'ocid',
     //   '6f49580061c28f43bf2c2be1f7be8fceefe8d04e6d233bd35cf2fabdeb93fb0d',
@@ -41,9 +49,9 @@ class _SplashState extends State<Splash> {
               controller: _controller,
               autocorrect: false,
               keyboardType: TextInputType.name,
-              onEditingComplete: () {},
+              onEditingComplete: save,
               decoration: InputDecoration(
-                hintText: '닉네임',
+                hintText: '닉네임을 입력하세요.',
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.blue.shade400),
                 ),
