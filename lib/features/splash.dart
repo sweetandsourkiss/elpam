@@ -31,11 +31,7 @@ class _SplashState extends State<Splash> {
         allowList: <String>{'ocid'},
       ),
     );
-    // print(_prefs.getString('ocid'));
-    // _prefs.setString(
-    //   'ocid',
-    //   '6f49580061c28f43bf2c2be1f7be8fceefe8d04e6d233bd35cf2fabdeb93fb0d',
-    // );
+    print(_prefs.getString('ocid'));
   }
 
   @override
@@ -48,7 +44,6 @@ class _SplashState extends State<Splash> {
             TextField(
               controller: _controller,
               autocorrect: false,
-              keyboardType: TextInputType.name,
               onEditingComplete: save,
               decoration: InputDecoration(
                 hintText: '닉네임을 입력하세요.',
