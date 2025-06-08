@@ -18,6 +18,7 @@ class _SplashState extends State<Splash> {
   }
 
   void save() async {
+    print(_controller.text);
     if (_controller.text != '') {
       String ocid = await getOcid(_controller.text);
       _prefs.setString('ocid', ocid);
@@ -31,29 +32,32 @@ class _SplashState extends State<Splash> {
         allowList: <String>{'ocid'},
       ),
     );
-    print(_prefs.getString('ocid'));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _controller,
-              autocorrect: false,
-              onEditingComplete: save,
-              decoration: InputDecoration(
-                hintText: '닉네임을 입력하세요.',
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blue.shade400),
-                ),
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        children: [
+          TextField(
+            controller: _controller,
+            autocorrect: false,
+            onEditingComplete: save,
+            decoration: InputDecoration(
+              hintText: '닉네임을 입력하세요.',
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.blue.shade400),
               ),
             ),
-          ],
-        ),
+          ),
+          OutlinedButton(
+            onPressed: () {
+              print(_prefs.getString('ocid'));
+            },
+            child: Text("Check"),
+          ),
+        ],
       ),
     );
   }
