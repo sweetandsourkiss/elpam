@@ -9,9 +9,9 @@ import 'package:http/http.dart' as http;
 part 'character.g.dart';
 
 @riverpod
-Future<Basic> characterBasic(Ref ref) async {
+Future<Basic> characterBasic(Ref ref, String ocid) async {
   final uri = Uri.https(authority, '/maplestory/v1/character/basic', {
-    'ocid': "6f49580061c28f43bf2c2be1f7be8fceefe8d04e6d233bd35cf2fabdeb93fb0d",
+    'ocid': ocid,
   });
   final response = await http.get(uri, headers: commonHeader);
   final json = jsonDecode(response.body) as Map<String, dynamic>;
