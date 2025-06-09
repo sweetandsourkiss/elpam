@@ -1,4 +1,3 @@
-import 'package:elpam/providers/apis/ocid.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,22 +7,12 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
-  late final SharedPreferencesWithCache _prefs;
-  final TextEditingController _controller = TextEditingController();
+  SharedPreferencesWithCache? _prefs;
 
   @override
   void initState() {
     super.initState();
     load();
-  }
-
-  void save() async {
-    print(_controller.text);
-    if (_controller.text != '') {
-      String ocid = await getOcid(_controller.text);
-      _prefs.setString('ocid', ocid);
-      print(ocid);
-    }
   }
 
   void load() async {
@@ -32,33 +21,16 @@ class _SplashState extends State<Splash> {
         allowList: <String>{'ocid'},
       ),
     );
+    String? ocid = _prefs!.getString('ocid');
+    if (ocid != null && ocid != '') {
+      Navigator.pushNamed(context, '/home');
+    } else {
+      Navigator.pushNamed(context, '/setting');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        children: [
-          TextField(
-            controller: _controller,
-            autocorrect: false,
-            onEditingComplete: save,
-            decoration: InputDecoration(
-              hintText: '닉네임을 입력하세요.',
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.blue.shade400),
-              ),
-            ),
-          ),
-          OutlinedButton(
-            onPressed: () {
-              print(_prefs.getString('ocid'));
-            },
-            child: Text("Check"),
-          ),
-        ],
-      ),
-    );
+    return CircularProgressIndicator();
   }
 }
