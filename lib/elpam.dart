@@ -1,3 +1,5 @@
+import 'package:elpam/features/home.dart';
+import 'package:elpam/features/setting.dart';
 import 'package:elpam/features/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,10 @@ class Elpam extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
+      routes: {
+        '/home': (context) => Home(),
+        '/setting': (context) => Setting(),
+      },
       home: Scaffold(body: Splash()),
     );
   }
