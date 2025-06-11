@@ -1,4 +1,3 @@
-import 'package:elpam/features/setting.dart';
 import 'package:elpam/models/character/basic/basic.dart';
 import 'package:elpam/providers/apis/character.dart';
 import 'package:flutter/material.dart';
