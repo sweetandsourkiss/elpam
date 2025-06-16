@@ -1,5 +1,4 @@
 import 'package:elpam/models/character/basic/basic.dart';
-import 'package:elpam/news_data.dart';
 import 'package:elpam/providers/apis/character.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,14 +7,10 @@ import 'package:home_widget/home_widget.dart';
 
 const String androidWidgetName = 'CharImageAppWidget';
 
-void updateHeadline(NewsArticle newHeadline) {
+void updateHeadline(String url) {
   // Add from here
   // Save the headline data to the widget
-  HomeWidget.saveWidgetData<String>('headline_title', newHeadline.title);
-  HomeWidget.saveWidgetData<String>(
-    'headline_description',
-    newHeadline.description,
-  );
+  HomeWidget.saveWidgetData<String>('char_image_url', url);
   HomeWidget.updateWidget(
     // iOSName: iOSWidgetName,
     androidName: androidWidgetName,
@@ -31,13 +26,11 @@ class Home extends ConsumerStatefulWidget {
 
 class _HomeState extends ConsumerState<Home> {
   SharedPreferencesWithCache? _prefs;
-  int count = 0;
 
   @override
   void initState() {
     super.initState();
     load();
-    update();
   }
 
   void load() async {
@@ -54,20 +47,9 @@ class _HomeState extends ConsumerState<Home> {
     setState(() {});
   }
 
-  void update() {
-    print("hello");
+  void update(Basic value) {
     // HomeWidget.setAppGroupId(appGroupId);
-
-    // Mock read in some data and update the headline
-    // final newHeadline = getNewsStories()[0];
-    count = count + 1;
-    final newHeadline = NewsArticle(
-      title: 'title$count',
-      description: 'description$count',
-    );
-    updateHeadline(newHeadline);
-
-    setState(() {});
+    updateHeadline(value.character_image);
   }
 
   void reset() async {
@@ -100,9 +82,12 @@ class _HomeState extends ConsumerState<Home> {
               Text(value.character_level.toString()),
               Text(value.character_class),
               Text(value.character_name),
-              SizedBox(height: 32),
+              SizedBox(height: 12),
               OutlinedButton(onPressed: reset, child: Text('Reset')),
-              OutlinedButton(onPressed: update, child: Text("Update")),
+              OutlinedButton(
+                onPressed: () => update(value),
+                child: Text("Update Widget"),
+              ),
             ],
           ),
         ),
