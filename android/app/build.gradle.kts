@@ -54,4 +54,6 @@ flutter {
 
 dependencies {
     implementation("androidx.glance:glance-appwidget:1.0.0-alpha02")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 }
