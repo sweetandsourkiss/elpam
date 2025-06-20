@@ -1,15 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Widget.Android.AppWidget.Container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.Android.AppWidgetContainer">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/transparent"> <!-- 배경 투명화 -->
     <ImageView
         android:id="@+id/char_image_url"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@string/appwidget_text"
+        android:background="#00FFFFFF"
         tools:src="@color/light_blue_900" />
-
 </RelativeLayout>
