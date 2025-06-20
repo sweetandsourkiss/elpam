@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
 
     <!--
      Required to query activities that can process text, see:
@@ -21,6 +23,7 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:label="elpam">
+
         <receiver
             android:name=".CharImageAppWidget"
             android:exported="false">
@@ -32,6 +35,10 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/char_image_app_widget_info" />
         </receiver>
+        <service
+            android:name=".WidgetUpdateService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
 
         <activity
             android:name=".MainActivity"
