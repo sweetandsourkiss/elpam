@@ -3,8 +3,11 @@ package com.example.elpam
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.os.Build
+import android.util.Log
 import android.widget.RemoteViews
 
 // New import.
@@ -22,6 +25,7 @@ class CharImageAppWidget : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
+        Log.d("WidgetUpdateService", "updateWidget called") // 로그 추가
         // There may be multiple widgets active, so update all of them
         for (appWidgetId in appWidgetIds) {
             val widgetData = HomeWidgetPlugin.getData(context)
@@ -48,10 +52,17 @@ class CharImageAppWidget : AppWidgetProvider() {
     }
 
     override fun onEnabled(context: Context) {
-        // Enter relevant functionality for when the first widget is created
+        // 서비스 시작
+        val serviceIntent = Intent(context, WidgetUpdateService::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.startForegroundService(serviceIntent)
+        } else {
+            context.startService(serviceIntent)
+        }
     }
 
     override fun onDisabled(context: Context) {
-        // Enter relevant functionality for when the last widget is disabled
+        // 서비스 정지
+        context.stopService(Intent(context, WidgetUpdateService::class.java))
     }
 }
