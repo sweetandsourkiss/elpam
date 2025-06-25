@@ -7,10 +7,14 @@ import 'package:home_widget/home_widget.dart';
 
 const String androidWidgetName = 'CharImageAppWidget';
 
-void updateHeadline(String url) {
+void updateAndroid(String url) {
   // Add from here
   // Save the headline data to the widget
   HomeWidget.saveWidgetData<String>('char_image_url', url);
+  HomeWidget.saveWidgetData<String>('char_image_action', 'A03');
+  HomeWidget.saveWidgetData<String>('char_image_emotion', 'E06');
+  HomeWidget.saveWidgetData<int>('char_image_action_max_frame', 4);
+  HomeWidget.saveWidgetData<int>('char_image_emotion_max_frame', 3);
   HomeWidget.updateWidget(
     // iOSName: iOSWidgetName,
     androidName: androidWidgetName,
@@ -49,7 +53,7 @@ class _HomeState extends ConsumerState<Home> {
 
   void update(Basic value) {
     // HomeWidget.setAppGroupId(appGroupId);
-    updateHeadline(value.character_image);
+    updateAndroid(value.character_image);
   }
 
   void reset() async {
