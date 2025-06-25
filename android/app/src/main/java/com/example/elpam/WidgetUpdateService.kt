@@ -20,11 +20,12 @@ class WidgetUpdateService : Service() {
     private lateinit var runnable: Runnable
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Log.d("WidgetUpdateService", "onStartCommand called") // 로그 추가 - 2번
         startForeground(1, createNotification())
         runnable = object : Runnable {
             override fun run() {
                 updateWidget()
-                handler.postDelayed(this, 1000) // 1초마다 반복
+                handler.postDelayed(this, 250) // 0.25초마다 반복
             }
         }
         handler.post(runnable)
@@ -32,6 +33,7 @@ class WidgetUpdateService : Service() {
     }
 
     private fun updateWidget() {
+//        Log.d("WidgetUpdateService", "updateWidget called") // 로그 추가 - 3번
         val appWidgetManager = AppWidgetManager.getInstance(this)
         val ids = appWidgetManager.getAppWidgetIds(
             ComponentName(this, CharImageAppWidget::class.java) // 임포트 해결됨
