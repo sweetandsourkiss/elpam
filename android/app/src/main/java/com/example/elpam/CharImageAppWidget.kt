@@ -121,8 +121,10 @@ class CharImageAppWidget : AppWidgetProvider() {
             // 서비스 시작
             val serviceIntent = Intent(context, WidgetUpdateService::class.java)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Log.d("WidgetUpdateService", "Foreground Service has started")
                 context.startForegroundService(serviceIntent)
             } else {
+                Log.d("WidgetUpdateService", "그냥 Service has started")
                 context.startService(serviceIntent)
             }
         }

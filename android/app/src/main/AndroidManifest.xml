@@ -35,6 +35,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/char_image_app_widget_info" />
         </receiver>
+
         <service
             android:name=".WidgetUpdateService"
             android:exported="false"
