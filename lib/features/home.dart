@@ -1,7 +1,7 @@
-import 'package:elpam/models/character/basic/basic.dart';
-import 'package:elpam/providers/apis/character.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mezet/models/character/basic/basic.dart';
+import 'package:mezet/providers/apis/character.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:home_widget/home_widget.dart';
 

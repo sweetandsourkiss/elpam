@@ -1,3 +1,3 @@
-# Elpam(가제)
+# MeZet
 
-NEXON OPEN API를 활용한 메이플스토리 애플리케이션
+MapleStory OPEN API를 활용한 홈 스크린 위젯 서비스.

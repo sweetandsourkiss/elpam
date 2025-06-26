@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:elpam/constants/headers.dart';
-import 'package:elpam/constants/strings.dart';
-import 'package:elpam/models/character/basic/basic.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mezet/constants/headers.dart';
+import 'package:mezet/constants/strings.dart';
+import 'package:mezet/models/character/basic/basic.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:http/http.dart' as http;
 

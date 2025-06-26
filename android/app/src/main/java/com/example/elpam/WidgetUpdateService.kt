@@ -1,4 +1,4 @@
-package com.example.elpam
+package com.example.mezet
 
 import android.app.Notification
 import android.app.NotificationManager

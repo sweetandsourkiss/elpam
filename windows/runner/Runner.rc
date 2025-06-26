@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "elpam" "\0"
+            VALUE "FileDescription", "mezet" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "elpam" "\0"
+            VALUE "InternalName", "mezet" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2025 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "elpam.exe" "\0"
-            VALUE "ProductName", "elpam" "\0"
+            VALUE "OriginalFilename", "mezet.exe" "\0"
+            VALUE "ProductName", "mezet" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

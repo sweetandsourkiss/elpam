@@ -1,5 +1,5 @@
-name: elpam
-description: "A new Flutter project."
+name: mezet
+description: "A home screen widget service using MapleStory OPEN API"
 publish_to: "none"
 
 version: 1.0.0+1

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:elpam/constants/headers.dart';
-import 'package:elpam/constants/strings.dart';
 import 'package:http/http.dart' as http;
+import 'package:mezet/constants/headers.dart';
+import 'package:mezet/constants/strings.dart';
 
 Future<String> getOcid(String name) async {
   final uri = Uri.https(authority, '/maplestory/v1/id', {
